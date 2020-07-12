@@ -1,2 +1,2 @@
-# hackauth
+# Hack Auth
 No cheating allowed
