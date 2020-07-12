@@ -1,0 +1,2 @@
+# hackauth
+No cheating allowed
