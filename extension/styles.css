@@ -1,0 +1,5 @@
+.flag {
+  display: flex;
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+}
