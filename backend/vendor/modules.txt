@@ -25,6 +25,10 @@ github.com/valyala/fasthttp/fasthttputil
 github.com/valyala/fasthttp/stackless
 # github.com/valyala/tcplisten v0.0.0-20161114210144-ceec8f93295a
 github.com/valyala/tcplisten
+# golang.org/x/net v0.0.0-20200707034311-ab3426394381
+## explicit
+golang.org/x/net/html
+golang.org/x/net/html/atom
 # golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
