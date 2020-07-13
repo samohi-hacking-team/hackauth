@@ -181,15 +181,9 @@ func main() {
 			} else {
 				var overallRating OverallRating
 
-				var newFlag Flag
-				newFlag.Message = "No Github Repo Listed. This is a severe issue because they provided no verification that their code exists."
-				newFlag.Severity = "severe"
-
-				flags = append(flags, newFlag)
-
 				overallRating.Flags = flags
 
-				rating = 3
+				rating = 0
 
 				overallRating.Rating = rating
 				returnValue, err := json.Marshal(overallRating)
