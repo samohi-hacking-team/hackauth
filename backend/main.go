@@ -23,6 +23,11 @@ type SubmissionPeriod struct {
 	Ends   string `json:"ends"`
 }
 
+type Flag struct {
+	Severity string `json:severity`
+	Message  string `json:message`
+}
+
 func main() {
 
 	app := fiber.New()
@@ -130,7 +135,7 @@ func main() {
 
 		if elementWithIDExists(softwareDoc, "software-header") && elementWithIDExists(hackathonDoc, "main") {
 			var submissionPeriod SubmissionPeriod = getSubmssionPeriod(getElementById(hackathonDoc, "main"))
-			c.Send("ITS RUDE NOT TO SEND A RESPONSE")
+			//c.Send("ITS RUDE NOT TO SEND A RESPONSE")
 
 			parsedStartTime, startTimeErr := time.Parse("January 02 at 3:04am MST", submissionPeriod.Begins)
 			parsedEndTime, endTimeErr := time.Parse("January 02 at 3:04am MST", submissionPeriod.Begins)
@@ -143,11 +148,14 @@ func main() {
 				fmt.Println(endTimeErr)
 				log.Fatal("END TIME ERROR")
 			}
-			fmt.Println(parsedStartTime)
 			parsedStartTime = parsedStartTime.AddDate(2020, 0, 0)
+			parsedEndTime = parsedEndTime.AddDate(2020, 0, 0)
 
-			testFormat := parsedStartTime.Format("2006-Jan-02")
-			c.Send(testFormat)
+			containsGithubRepo := containsGithubRepo(softwareDoc)
+			if !containsGithubRepo {
+
+			}
+
 		} else {
 			//WRONG URL
 
@@ -283,4 +291,19 @@ func getSubmssionPeriod(n *html.Node) SubmissionPeriod {
 	submissionPeriod.Ends = submissionRowTDs[2].FirstChild.Data
 	return submissionPeriod
 
+}
+
+func containsGithubRepo(n *html.Node) bool {
+	links := buildLinkNodes(n)
+	for i := 0; i < len(links); i++ {
+		link := links[i]
+		if attrContains(link.Attr, "href") {
+			href, _ := GetAttribute(link, "href")
+			if strings.Contains(href, "https://github.com") {
+				return true
+			}
+		}
+
+	}
+	return false
 }
