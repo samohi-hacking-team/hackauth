@@ -1,13 +1,18 @@
 .flag {
   display: inline-flex;
   background-color: rgb(236, 236, 236);
-  border-radius: 5px;
+  border-radius: 2px;
   margin: 27.5px 5px 27.5px 5px;
 }
 
+.redflag {
+  background-color: red;
+}
+
 .flagContent {
-  margin: 5px 10px 5px 10px;
+  margin: 6px 10px 6px 10px;
   color: black;
+  font-weight: bold;
 }
 
 .hackauth {
