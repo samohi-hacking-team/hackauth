@@ -24,6 +24,6 @@ function insertFlags(data) {
     <div class="flagContent">${data[i].flag}</div>
     <div class="flagContent">${data[i].severity}</div>
   </div>`
-    hackauth.insertAdjacentHTML('afterend', flag);
+    hackauth.insertAdjacentHTML('beforeend', flag);
   }
 }
