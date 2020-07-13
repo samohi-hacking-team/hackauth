@@ -27,6 +27,10 @@ type Flag struct {
 	Severity string `json:severity`
 	Message  string `json:message`
 }
+type OverallRating struct {
+	Flags  []Flag `json:flags`
+	Rating int32  `json:rating`
+}
 
 func main() {
 
@@ -151,9 +155,48 @@ func main() {
 			parsedStartTime = parsedStartTime.AddDate(2020, 0, 0)
 			parsedEndTime = parsedEndTime.AddDate(2020, 0, 0)
 
+			var flags []Flag
+			var rating int32
+
 			containsGithubRepo := containsGithubRepo(softwareDoc)
 			if !containsGithubRepo {
+				var overallRating OverallRating
 
+				var newFlag Flag
+				newFlag.Message = "No Github Repo Listed. This is a severe issue because they provided no verification that their code exists."
+				newFlag.Severity = "severe"
+
+				flags = append(flags, newFlag)
+
+				overallRating.Flags = flags
+
+				rating = 3
+
+				overallRating.Rating = rating
+				returnValue, err := json.Marshal(overallRating)
+				if err != nil {
+					log.Fatal("Cannot encode to JSON ", err)
+				}
+				c.Send(returnValue)
+			} else {
+				var overallRating OverallRating
+
+				var newFlag Flag
+				newFlag.Message = "No Github Repo Listed. This is a severe issue because they provided no verification that their code exists."
+				newFlag.Severity = "severe"
+
+				flags = append(flags, newFlag)
+
+				overallRating.Flags = flags
+
+				rating = 3
+
+				overallRating.Rating = rating
+				returnValue, err := json.Marshal(overallRating)
+				if err != nil {
+					log.Fatal("Cannot encode to JSON ", err)
+				}
+				c.Send(returnValue)
 			}
 
 		} else {
