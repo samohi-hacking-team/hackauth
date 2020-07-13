@@ -1,5 +1,3 @@
-
-
 var bendata = [
 {
   "flag": "Submitted to hackathons with earlier start date",
@@ -18,8 +16,8 @@ function insertFlags(data) {
 
   for (var i = 0; i < data.length; i++) {
     var flag = `<div class = "flag">
-    <div>${data[i].flag}</div>
-    <div>${data[i].severity}</div>
+    <div class="flagContent">${data[i].flag}</div>
+    <div class="flagContent">${data[i].severity}</div>
   </div>`
     hackauth.insertAdjacentHTML('afterend', flag);
   }
