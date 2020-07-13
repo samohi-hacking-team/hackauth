@@ -6,13 +6,18 @@ var bendata = [
 {
   "flag": "Started before hackathon",
   "severity": "1"
-}, 
+},
+  {
+    "flag": "Started before hackathon",
+    "severity": "1"
+  }, 
+
     ]
 
 insertFlags(bendata)
 
 function insertFlags(data) {
-  var hackauth = document.getElementById('software-nav');
+  var hackauth = document.getElementById('software-header');
 
   for (var i = 0; i < data.length; i++) {
     var flag = `<div class = "flag">

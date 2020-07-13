@@ -10,5 +10,4 @@
     "js": ["content.js"],
     "matches": ["https://devpost.com/software/*"]
   }]
-
 }
